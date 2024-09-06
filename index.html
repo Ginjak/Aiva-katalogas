@@ -9,6 +9,10 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
     <link rel="stylesheet" type="text/css" href="/styles.css" />
     <title>Aiva-katalogas</title>
   </head>
@@ -35,12 +39,100 @@
     </div>
     </header>
     <main>
-      
+      <div class="container">
+      <div class="tab-buttons">
+        <button class="btn btn-primary active">Klientų katalogas</button>
+        <button class="btn btn-primary">Kliento kortelė</button>
+      </div>
+      <div class="filter">
+        <form>
+        <div class="dates-wraper">
+          <label for="ivesta"><input type="checkbox" id="ivesta" name="ivesta">Įvesta</label>
+         <div class="dates">
+          <label for="datetime-picker-from">Nuo
+            <input type="text" id="datetime-picker-from" name="datetime-picker-from" placeholder="Data">
+          </label>
+          <label for="datetime-picker-to">iki
+            <input type="text" id="datetime-picker-to" name="datetime-picker-to" placeholder="Data">
+          </label>
+         </div>
+        </div>
+        <label for="kam-priklauso">Kam priklauso
+          <div class="select-wraper">
+            <select id="kam-priklauso" name="kam-priklauso">
+              <option value="" disabled selected></option>
+              <option value="1">Vienas</option>
+              <option value="2">Du</option>
+            </select>
+            <div class="select-arrow"><i class="fa-solid fa-sort-down"></i></div>
+          </div>
+        </label>
+        <label for="svarbumas">Svarbumas
+          <div class="select-wraper">
+            <select id="svarbumas" name="svarbumas">
+              <option value="" disabled selected></option>
+              <option value="1">Vienas</option>
+              <option value="2">Du</option>
+            </select>
+            <div class="select-arrow"><i class="fa-solid fa-sort-down"></i></div>
+          </div>
+        </label>
+        <label for="tipas">Tipas
+          <div class="select-wraper">
+            <select id="tipas" name="tipas">
+              <option value="" disabled selected></option>
+              <option value="1">Vienas</option>
+              <option value="2">Du</option>
+            </select>
+            <div class="select-arrow"><i class="fa-solid fa-sort-down"></i></div>
+          </div>
+        </label>
+        <label for="busena">Būsena
+          <div class="select-wraper">
+            <select id="busena" name="busena">
+              <option value="" disabled selected></option>
+              <option value="1">Vienas</option>
+              <option value="2">Du</option>
+            </select>
+            <div class="select-arrow"><i class="fa-solid fa-sort-down"></i></div>
+          </div>
+        </label>
+        <label for="veikla">Veikla
+          <div class="select-wraper">
+            <select id="veikla" name="veikla">
+              <option value="" disabled selected></option>
+              <option value="1">Vienas</option>
+              <option value="2">Du</option>
+            </select>
+            <div class="select-arrow"><i class="fa-solid fa-sort-down"></i></div>
+          </div>
+        </label>
+        <label for="miestas">Miestas
+          <div class="select-wraper">
+            <select id="miestas" name="miestas">
+              <option value="" disabled selected></option>
+              <option value="1">Vienas</option>
+              <option value="2">Du</option>
+            </select>
+            <div class="select-arrow"><i class="fa-solid fa-sort-down"></i></div>
+          </div>
+        </label>
+        <label for="paieska">Paieška
+          <div class="paieska-wraper">
+          <input type="text" name="paieska" id="paieska">
+          <div class="paieska-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+        </div>
+        </label>
+      </form>
+      </div>
+    </div>
     </main>
+    
     <script
       src="https://kit.fontawesome.com/8576b8686b.js"
       crossorigin="anonymous"
     ></script>
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="/script.js"></script>
   </body>
 </html>

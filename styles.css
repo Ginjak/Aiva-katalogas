@@ -16,12 +16,74 @@
   margin: auto;
 }
 
+.btn {
+  padding: 12px 16px;
+  border: none;
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--light-blue);
+  color: var(--white);
+  transition: all 0.2s linear;
+}
+.btn-primary:hover {
+  background: var(--dark-blue);
+}
 .active {
   background: var(--dark-blue);
 }
+
+.select-wraper {
+  display: flex;
+}
+
 ul {
   list-style: none;
 }
+
+input {
+  height: 28px;
+  padding: 0 5px;
+}
+select {
+  position: relative;
+  width: 150px;
+  height: 28px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  border: 1px solid var(--light-blue);
+  font-size: 16px;
+  outline: none;
+  z-index: 10;
+  transition: box-shadow 0.2s ease;
+}
+select:focus {
+  box-shadow: 0 0 5px 2px rgba(31, 132, 187, 0.5);
+}
+.select-wraper {
+  position: relative;
+  width: 150px;
+}
+.select-arrow {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  right: 0;
+  height: 28px;
+  width: 28px;
+  background: var(--light-blue);
+  color: var(--white);
+  z-index: 9;
+}
+.select-arrow i {
+  margin-top: 3px;
+}
+
 /* Header */
 
 header {
@@ -40,6 +102,7 @@ header {
 .navigation li {
   padding: 18px 24px;
   font-size: 18px;
+  font-weight: 500;
   line-height: 1;
   letter-spacing: 1.4px;
   color: var(--white);
@@ -59,8 +122,52 @@ header {
   gap: 20px;
   color: var(--white);
   font-size: 18px;
+  font-weight: 500;
 }
 .user {
   display: flex;
   gap: 5px;
 }
+
+/* Main */
+main {
+  padding: 5px;
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+/* Form */
+form {
+  display: flex;
+}
+form label {
+  display: flex;
+  flex-direction: column;
+}
+form .dates-wraper label {
+  display: flex;
+  flex-direction: row;
+}
+.dates {
+  display: flex;
+}
+
+.paieska-wraper {
+  position: relative;
+  width: 200px;
+}
+
+.paieska-icon {
+  position: absolute;
+  top: 0;
+  right: 28px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Test css */
