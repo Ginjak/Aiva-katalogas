@@ -1,0 +1,10 @@
+:root {
+  --light-blue: #1f84bb;
+  --dark-blue: #0d0a77;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
