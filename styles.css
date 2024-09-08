@@ -12,7 +12,7 @@
 }
 
 .container {
-  max-width: 1440px;
+  max-width: 1600px;
   margin: auto;
 }
 
@@ -22,6 +22,9 @@
   transition: all 0.2s linear;
   cursor: pointer;
 }
+.btn-small {
+  height: 44px;
+}
 
 .btn-primary {
   background: var(--light-blue);
@@ -30,6 +33,15 @@
 }
 .btn-primary:hover {
   background: var(--dark-blue);
+}
+
+.btn-secondary {
+  background: var(--dark-blue);
+  color: var(--white);
+  transition: all 0.2s linear;
+}
+.btn-secondary:hover {
+  background: var(--light-blue);
 }
 .active {
   background: var(--dark-blue);
@@ -146,10 +158,12 @@ form {
 form label {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 form .dates-wraper label {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
 }
 .dates {
   display: flex;
@@ -169,5 +183,13 @@ form .dates-wraper label {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.paieska-icon i {
+  cursor: pointer;
+}
+
+.perziura-wraper {
+  display: flex;
+  align-items: flex-end;
 }
 /* Test css */
