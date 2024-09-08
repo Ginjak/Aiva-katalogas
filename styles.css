@@ -29,6 +29,9 @@
   height: 44px;
   padding: 12px 32px;
 }
+.btn-extr-small {
+  padding: 6px 32px;
+}
 
 .btn-primary {
   background: var(--light-blue);
@@ -47,6 +50,20 @@
 .btn-secondary:hover {
   background: var(--light-blue);
 }
+
+.btn-icon {
+  border-radius: 50%;
+  background: transparent;
+  padding: 4px;
+  font-size: 12px;
+  border: 1px solid var(--white);
+  margin-left: 5px;
+}
+.btn-icon:before {
+  margin-top: 1px;
+  margin-left: 1px;
+}
+
 .active {
   background: var(--dark-blue);
 }
@@ -316,4 +333,11 @@ form .dates-wraper label {
   align-items: center;
   gap: 5px;
 }
-/* Test css */
+
+/* Buttons */
+.buttons-wraper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
