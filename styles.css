@@ -2,6 +2,7 @@
   --light-blue: #1f84bb;
   --dark-blue: #0d0a77;
   --white: #fff;
+  --light-grey: #6d6d6d;
 }
 
 * {
@@ -21,9 +22,11 @@
   border: none;
   transition: all 0.2s linear;
   cursor: pointer;
+  letter-spacing: 1.2px;
 }
 .btn-small {
   height: 44px;
+  padding: 12px 32px;
 }
 
 .btn-primary {
@@ -58,10 +61,11 @@ ul {
 input {
   height: 28px;
   padding: 0 5px;
+  max-width: 120px;
 }
 select {
   position: relative;
-  width: 150px;
+  width: 120px;
   height: 28px;
   appearance: none;
   -webkit-appearance: none;
@@ -78,7 +82,7 @@ select:focus {
 }
 .select-wraper {
   position: relative;
-  width: 150px;
+  width: 120px;
 }
 .select-arrow {
   position: absolute;
@@ -94,6 +98,31 @@ select:focus {
 }
 .select-arrow i {
   margin-top: 3px;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: var(--white);
+  border: 1px solid var(--light-blue);
+  border-radius: 0px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Optional: Add a checkmark */
+input[type="checkbox"]:checked::after {
+  content: "✔";
+  font-weight: bold;
+  font-size: 14px;
+  color: var(--light-blue);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* Header */
@@ -152,37 +181,70 @@ main {
 }
 
 /* Form */
+.filter {
+  margin-top: 20px;
+}
 form {
   display: flex;
+  justify-content: space-between;
 }
 form label {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 5px;
+  color: var(--light-grey);
+}
+form .dates-wraper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 form .dates-wraper label {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
 }
 .dates {
   display: flex;
+  gap: 5px;
+}
+.dates .flatpickr-input {
+  border: 1px solid var(--light-blue);
 }
 
+.dates .flatpickr-input.active {
+  background: var(--white);
+}
+#paieska,
+.dates .flatpickr-input {
+  outline: none;
+}
+#paieska:focus,
+.dates .flatpickr-input:focus {
+  box-shadow: 0 0 5px 2px rgba(31, 132, 187, 0.5);
+}
 .paieska-wraper {
   position: relative;
-  width: 200px;
+  width: 172px;
+}
+.paieska-wraper input {
+  max-width: 100%;
+  border: 1px solid var(--light-blue);
 }
 
 .paieska-icon {
   position: absolute;
   top: 0;
-  right: 28px;
+  right: 0px;
   width: 28px;
   height: 28px;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--light-blue);
 }
 .paieska-icon i {
   cursor: pointer;
