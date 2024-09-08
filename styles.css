@@ -2,7 +2,8 @@
   --light-blue: #1f84bb;
   --dark-blue: #0d0a77;
   --white: #fff;
-  --light-grey: #6d6d6d;
+  --grey: #6d6d6d;
+  --light-grey: #efeff1;
 }
 
 * {
@@ -193,7 +194,7 @@ form label {
   flex-direction: column;
   justify-content: space-between;
   gap: 5px;
-  color: var(--light-grey);
+  color: var(--grey);
 }
 form .dates-wraper {
   display: flex;
@@ -253,5 +254,66 @@ form .dates-wraper label {
 .perziura-wraper {
   display: flex;
   align-items: flex-end;
+}
+
+/* Results */
+.results {
+  margin-top: 20px;
+  border: 2px solid var(--light-blue);
+}
+.results-header,
+.results-body-row {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 2fr 1fr 1fr 1fr;
+}
+.results-header {
+  border-bottom: 2px solid var(--light-blue);
+}
+
+.results-body {
+  position: relative;
+}
+.results-body:after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 1px;
+  background: var(--light-grey);
+}
+.results-body:last-child:after {
+  background: none;
+}
+
+.results-header p {
+  background: var(--light-grey);
+  border-right: 1px solid var(--light-blue);
+  padding: 8px 12px;
+}
+.results-header p:last-child {
+  border-right: none;
+}
+
+.results-body {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+}
+
+.results-body .results-body-column {
+  position: relative;
+  border-radius: 0;
+  padding: 4px 12px;
+  border-right: 1px solid var(--light-blue);
+  z-index: 10;
+}
+
+.results-body .results-body-column:last-child {
+  border-right: none;
+}
+.results-body .results-body-column label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 /* Test css */
