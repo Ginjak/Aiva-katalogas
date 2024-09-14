@@ -58,7 +58,7 @@
           </label>
          </div>
         </div>
-        <label for="kam-priklauso">Kam priklauso
+        <label for="kam-priklauso" class="kam-priklauso">Kam priklauso
           <div class="select-wraper">
             <select id="kam-priklauso" name="kam-priklauso">
               <option value="" disabled selected></option>
@@ -68,7 +68,7 @@
             <div class="select-arrow"><i class="fa-solid fa-sort-down"></i></div>
           </div>
         </label>
-        <label for="svarbumas">Svarbumas
+        <label for="svarbumas" class="svarbumas">Svarbumas
           <div class="select-wraper">
             <select id="svarbumas" name="svarbumas">
               <option value="" disabled selected></option>
@@ -78,7 +78,7 @@
             <div class="select-arrow"><i class="fa-solid fa-sort-down"></i></div>
           </div>
         </label>
-        <label for="tipas">Tipas
+        <label for="tipas" class="tipas">Tipas
           <div class="select-wraper">
             <select id="tipas" name="tipas">
               <option value="" disabled selected></option>
@@ -88,7 +88,7 @@
             <div class="select-arrow"><i class="fa-solid fa-sort-down"></i></div>
           </div>
         </label>
-        <label for="busena">Būsena
+        <label for="busena" class="busena">Būsena
           <div class="select-wraper">
             <select id="busena" name="busena">
               <option value="" disabled selected></option>
@@ -98,7 +98,7 @@
             <div class="select-arrow"><i class="fa-solid fa-sort-down"></i></div>
           </div>
         </label>
-        <label for="veikla">Veikla
+        <label for="veikla" class="veikla">Veikla
           <div class="select-wraper">
             <select id="veikla" name="veikla">
               <option value="" disabled selected></option>
@@ -108,7 +108,7 @@
             <div class="select-arrow"><i class="fa-solid fa-sort-down"></i></div>
           </div>
         </label>
-        <label for="miestas">Miestas
+        <label for="miestas" class="miestas">Miestas
           <div class="select-wraper">
             <select id="miestas" name="miestas">
               <option value="" disabled selected></option>
@@ -129,59 +129,63 @@
       </div>
       </form>
       </div>
-      <div class="results">
-        <div class="results-header">
-          <p class="results-title">Pavadinimas</p>
-          <p class="results-title">Miestas</p>
-          <p class="results-title">Veikla</p>
-          <p class="results-title">Veiklos rūšis</p>
-          <p class="results-title">Darbuotojų sk.</p>
-          <p class="results-title">Vadybininkas</p>
-          <p class="results-title">?</p>
-        </div>
-        <div class="results-body">
-          <div class="results-body-row">
-          <div class="results-body-column"><label for="vienas"><input type="checkbox" id="vienas" name="vienas">Tekstas</label></div>
-          <div class="results-body-column">Tekstas</div>
-          <div class="results-body-column">Tekstas</div>
-          <div class="results-body-column">Tekstas</div>
-          <div class="results-body-column">111</div>
-          <div class="results-body-column">Tekstas</div>
-          <div class="results-body-column">Tekstas</div>
-        </div>
-        </div>
-        <div class="results-body">
-          <div class="results-body-row">
-          <div class="results-body-column"><label for="du"><input type="checkbox" id="du" name="du">Tekstas</label></div>
-          <div class="results-body-column">Tekstas</div>
-          <div class="results-body-column">Tekstas</div>
-          <div class="results-body-column">Tekstas</div>
-          <div class="results-body-column">111</div>
-          <div class="results-body-column">Tekstas</div>
-          <div class="results-body-column">Tekstas</div>
-        </div>
-        </div>
-        <div class="results-body">
-          <div class="results-body-row">
-          <div class="results-body-column"><label for="trys"><input type="checkbox" id="trys" name="trys">Tekstas</label></div>
-          <div class="results-body-column">Tekstas</div>
-          <div class="results-body-column">Tekstas</div>
-          <div class="results-body-column">Tekstas</div>
-          <div class="results-body-column">111</div>
-          <div class="results-body-column">Tekstas</div>
-          <div class="results-body-column">Tekstas</div>
-        </div>
-        </div>
-       
+      <div class="results">  
+      <div class="results-header">
+        <div class="results-header-title-main">
+        <p>Pavadinimas</p>
       </div>
+        <div class="results-header-wraper">
+        <p class="results-header-title d-none-small">Miestas</p>
+        <p class="results-header-title d-none-small">Veikla</p>
+        <p class="results-header-title d-none-small">Veiklos rūšis</p>
+        <p class="results-header-title d-none-small">Darbuotojų sk.</p>
+        <p class="results-header-title d-none-small">Vadybininkas</p>
+        <p class="results-header-title d-none-small">?</p>
+      </div>
+      </div>
+      <div class="results-body-wraper">
+      <div class="results-body">
+        <div class="body-title-main " ><label for="vienas" ><input type="checkbox" id="vienas" name="vienas">Pirmas</label>
+        <p class="accordion-header" data-target="pirmas"><i class="fa-solid fa-chevron-down accordion-arrow"></i></p>
+      </div>
+        <div class="accordion-content" id="pirmas" >
+        <p class="body-title">Tekstas</p>
+        <p class="body-title">Tekstas</p>
+        <p class="body-title">Tekstas</p>
+        <p class="body-title">111</p>
+        <p class="body-title">Tekstas</p>
+        <p class="body-title">Tekstas</p>
+      </div>
+      </div>
+      <div class="results-body">
+        <div class="body-title-main " ><label for="du" ><input type="checkbox" id="di" name="du">Pirmas</label>
+          <p class="accordion-header" data-target="antras"><i class="fa-solid fa-chevron-down accordion-arrow"></i></p></div>
+        <div class="accordion-content" id="antras" >
+        <p class="body-title">Tekstas</p>
+        <p class="body-title">Tekstas</p>
+        <p class="body-title">Tekstas</p>
+        <p class="body-title">111</p>
+        <p class="body-title">Tekstas</p>
+        <p class="body-title">Tekstas</p>
+      </div>
+      </div>
+
+
     </div>
+  </div>
+
+
+  </div>
     <div class="buttons-wraper">
       <button class="btn btn-primary btn-extr-small">Registruoti paklausimą</button>
       <button class="btn btn-primary btn-extr-small">Registruoti užsakymą</button>
+
       <button class="btn btn-secondary btn-extr-small">Naujas<i class="fa-solid fa-plus btn-icon"></i></button>
       <button class="btn btn-secondary btn-extr-small">Redaguoti<i class="fa-solid fa-pen btn-icon"></i></button>
     </div>
     </main>
+
+    <!-- <img src="/crm.jpg"> -->
     <script
       src="https://kit.fontawesome.com/8576b8686b.js"
       crossorigin="anonymous"
