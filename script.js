@@ -64,3 +64,29 @@ function applyAccordion() {
 
 applyAccordion();
 window.addEventListener("resize", applyAccordion);
+
+// Function to toggle mobile navigation
+function toggleMobileNav() {
+  const hamburgerMenu = document.querySelector(".hamburger-menu-wraper");
+  const mobileNavWrapper = document.querySelector(".mobile-nav-wraper");
+
+  // Toggle the visibility of the mobile navigation
+  hamburgerMenu.addEventListener("click", () => {
+    mobileNavWrapper.classList.toggle("show");
+  });
+}
+
+// Function to close the mobile navigation when the close button is clicked
+function setupMobileNavClose() {
+  const closeButton = document.getElementById("menu-close");
+  const mobileNavWrapper = document.querySelector(".mobile-nav-wraper");
+
+  closeButton.addEventListener("click", () => {
+    mobileNavWrapper.classList.remove("show");
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  toggleMobileNav();
+  setupMobileNavClose();
+});
