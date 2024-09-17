@@ -55,7 +55,10 @@
     </header>
     <main>
       <div class="container">
-
+      <div class="tab-buttons">
+        <button class="btn btn-primary active">Klientų katalogas</button>
+        <button class="btn btn-primary">Kliento kortelė</button>
+      </div>
       <div class="filter">
         <form>
         <div class="dates-wraper">
@@ -119,7 +122,16 @@
             <div class="select-arrow"><i class="fa-solid fa-sort-down"></i></div>
           </div>
         </label>
-
+        <label for="miestas" class="miestas">Miestas
+          <div class="select-wraper">
+            <select id="miestas" name="miestas">
+              <option value="" disabled selected></option>
+              <option value="1">Vienas</option>
+              <option value="2">Du</option>
+            </select>
+            <div class="select-arrow"><i class="fa-solid fa-sort-down"></i></div>
+          </div>
+        </label>
         <label for="paieska">Paieška
           <div class="paieska-wraper">
           <input type="text" name="paieska" id="paieska">
