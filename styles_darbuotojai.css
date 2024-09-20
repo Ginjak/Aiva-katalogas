@@ -1,0 +1,160 @@
+/* Darbuotojai puslapis */
+
+.alert {
+  color: #e75555;
+}
+
+.imones-darbuotojai-wraper {
+  display: flex;
+  gap: 20px;
+}
+.imones {
+  flex: 1;
+}
+
+.darbuotojai {
+  flex: 2;
+}
+
+.darbuotoju-table {
+  display: grid;
+  grid-template-columns: repeat(
+    4,
+    1fr
+  ); /* Adjust based on the number of columns */
+}
+
+.table-header,
+.table-row {
+  display: contents; /* Ensures proper alignment of grid items */
+}
+.table-header .cell {
+  background: var(--light-blue);
+  color: var(--white);
+}
+
+.cell {
+  border: 1px solid var(--light-grey);
+  padding: 13px;
+}
+
+.header .cell {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+.imone {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  cursor: pointer;
+  border: 1px solid var(--light-grey);
+}
+
+.imone:hover {
+  background: var(--light-hover-blue);
+}
+
+.imone-tile {
+  padding: 5px 0;
+}
+
+.imone button {
+  display: none;
+  margin-left: 10px;
+}
+
+.imone button.show-button,
+.imone button.edit-button {
+  background-color: var(--light-blue);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s linear;
+}
+
+.imone button.show-button:hover,
+.imone button.edit-button:hover {
+  background-color: var(--dark-blue);
+  transition: all 0.2s linear;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  max-width: 800px;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.modal-title {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.modal-close-button {
+  color: var(--light-blue);
+  float: right;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s linear;
+}
+
+.modal-close-button:hover,
+.modal-close-button:focus {
+  color: var(--dark-blue);
+  text-decoration: none;
+  cursor: pointer;
+  transform: rotate(180deg);
+  transition: transform 0.2s linear;
+}
+
+/* Imones redagavimo modal */
+.imones-redagavimas-wraper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 330px;
+  margin: auto;
+}
+.imones-redagavimas-wraper label {
+  display: flex;
+  gap: 20px;
+}
+.imones-redagavimas-wraper label span {
+  width: 130px;
+}
+.imones-redagavimas-wraper label input {
+  max-width: 100%;
+}
+
+.imones-redagavimas-btn-wraper {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#nauja-imone-btn,
+#naujas-darbuotojas-btn {
+  margin-top: 20px;
+}

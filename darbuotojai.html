@@ -2,10 +2,204 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="styles_darbuotojai.css" />
+    <title>Aiva-katalogas</title>
   </head>
   <body>
-    <p>Test</p>
+    <header>
+      <div id="hamburger-menu" class="container header">
+      <nav>
+        <div class="hamburger-menu-wraper">
+        <div class="hamburger-menu"></div>
+      </div>
+        <ul class="navigation">
+          <li class="nav-item"><a href="/index.html">Klientai</a></li>
+          <li class="nav-item">Užsakymai</li>
+          <li class="nav-item">Kalendorius</li>
+          <li class="nav-item">Katalogas</li>
+          <li class="nav-item active">Darbuotojai</li>
+          <li class="nav-item">Nustatymai</li>
+          <li class="nav-item">Informacija</li>
+        </ul>
+        <div class="mobile-nav-wraper"><ul class="mobile-nav">
+          <p id="menu-close"><i class="fa-solid fa-x"></i></p>
+          <li class="mobile-nav-item"><a href="/index.html">Klientai</a></li>
+          <li class="mobile-nav-item">Užsakymai</li>
+          <li class="mobile-nav-item">Kalendorius</li>
+          <li class="mobile-nav-item">Katalogas</li>
+          <li class="mobile-nav-item active">Darbuotojai</li>
+          <li class="mobile-nav-item">Nustatymai</li>
+          <li class="mobile-nav-item">Informacija</li>
+        </ul>
+      </div>
+      </nav>
+      <div class="user-wraper">
+        <p class="user"><span><i class="fa-solid fa-user"></i></span>Vartotojas</p>
+        <p>Prisijungta
+        <p><i class="fa-solid fa-arrow-right-from-bracket"></i></p>
+        </p>
+      </div>
+    </div>
+    </header>
+
+    <!-- Darbuotojai pradzia -->
+    <main>
+      <div class="container">
+        <div class="imones-darbuotojai-wraper">
+          <div class="imones">
+            <h2>Imones</h2>
+            <div class="imones-wraper">
+            </div>
+            <div class="flex-center">
+            <button id="nauja-imone-btn"class="btn btn-primary btn-extr-small ">Pridėti naują</button>
+            </div>
+          </div>
+          <div class="darbuotojai">
+            <h2>Darbuotojai</h2>
+            <div class="darbuotojai-wraper">
+              </div>
+              
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <span id="close-edit-modal" class="modal-close-button "><i class="fa-solid fa-x" aria-hidden="true"></i></span>
+        <h2 class="modal-title">Redaguoti įmonę</h2>
+        <div class="imones-redagavimas-wraper">
+        <label for="kompanijosPavadinimas"><span>Pavadinimas</span>
+        <input type="text" id="kompanijosPavadinimas" />
+      </label>
+        <label for="imonesKodas"><span>Įmonės kodas</span>
+        <input type="text" id="imonesKodas" />
+      </label>
+      
+        <label for="pvmKodas"><span>Pvm mokėtojas</span>
+        <input type="text" id="pvmKodas" />
+      </label>
+
+        <label for="adresas"><span>Adresas</span>
+        <input type="text" id="adresas" />
+      </label>
+
+        <label for="telefonas"><span>Telefonas</span>
+        <input type="text" id="telefonas" />
+      </label>
+
+        <label for="mobTelefonas"><span>Mob. telefonas</span>
+        <input type="text" id="mobTelefonas" />
+      </label>
+
+        <label for="svetaine"><span>Svetainė</span>
+        <input type="text" id="svetaine" />
+      </label>
+
+        <label for="elPastas"><span>El. paštas</span>
+        <input type="text" id="elPastas" />
+      </label>
+
+        <label for="rejestras"><span>Rejestras</span>
+        <input type="text" id="rejestras" />
+      </label>
+
+        <label for="numeravimui"><span>Numeravimui</span>
+        <input type="text" id="numeravimui" />
+      </label>
+
+        <label for="identifikavimui"><span>Identifikavimui</span>
+        <input type="text" id="identifikavimui" />
+      </label>
+      </div>
+
+        <div class="imones-redagavimas-btn-wraper">
+        <button id="close-modal-btn" class="btn btn-primary btn-extr-small ">Atšaukti</button>
+        <button id="saveChangesBtn" class="btn btn-secondary btn-extr-small">Išsaugoti</button>
+      </div>
+      </div>
+    </div>
+
+    <div id="naujaImone" class="modal">
+      <div class="modal-content">
+        <span id="close-nauja-modal" class="modal-close-button "><i class="fa-solid fa-x" aria-hidden="true"></i></span>
+        <h2 class="modal-title">Nauja įmonė</h2>
+        <div class="imones-redagavimas-wraper">
+        <label for="naujaKompanijaPavadinimas" id="naujaKompanijaLabel"><span>Pavadinimas</span>
+        <input type="text" id="naujaKompanijaPavadinimas" required/>
+      </label>
+      <label for="naujaImonesKodas"><span>Įmonės kodas</span>
+        <input type="text" id="naujaImonesKodas" />
+      </label>
+      
+        <label for="naujaPvmKodas"><span>Pvm mokėtojas</span>
+        <input type="text" id="naujaPvmKodas" />
+      </label>
+
+        <label for="naujaAdresas"><span>Adresas</span>
+        <input type="text" id="naujaAdresas" />
+      </label>
+
+        <label for="naujaTelefonas"><span>Telefonas</span>
+        <input type="text" id="naujaTelefonas" />
+      </label>
+
+        <label for="naujaMobTelefonas"><span>Mob. telefonas</span>
+        <input type="text" id="naujaMobTelefonas" />
+      </label>
+
+        <label for="naujaSvetaine"><span>Svetainė</span>
+        <input type="text" id="naujaSvetaine" />
+      </label>
+
+        <label for="naujaElPastas"><span>El. paštas</span>
+        <input type="text" id="naujaElPastas" />
+      </label>
+
+        <label for="naujaRejestras"><span>Rejestras</span>
+        <input type="text" id="naujaRejestras" />
+      </label>
+
+        <label for="naujaNumeravimui"><span>Numeravimui</span>
+        <input type="text" id="naujaNumeravimui" />
+      </label>
+
+        <label for="naujaIdentifikavimui"><span>Identifikavimui</span>
+        <input type="text" id="naujaIdentifikavimui" />
+      </label>
+        
+      </div>
+
+        <div class="imones-redagavimas-btn-wraper">
+        <button id="close-nauja-modal-btn" class="btn btn-primary btn-extr-small ">Cancel</button>
+        <button id="naujaImoneIssaugoti" class="btn btn-secondary btn-extr-small">Nauja imone</button>
+      </div>
+      </div>
+    </div>
+    
+
+    <!-- Darbuotojai pabaiga -->
+
+    <!-- Footer pradzia -->
+    <script
+      src="https://kit.fontawesome.com/8576b8686b.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="script.js"></script>
+    <script src="script_darbuotojai.js"></script>
   </body>
 </html>
