@@ -225,9 +225,17 @@ header {
   cursor: pointer;
   transition: all 0.2s linear;
 }
+
 .navigation li:hover {
   background: var(--dark-blue);
   transition: all 0.2s linear;
+}
+.navigation li a,
+.navigation li a:visited,
+.mobile-nav li a,
+.mobile-nav li a:visited {
+  text-decoration: none;
+  color: var(--white);
 }
 
 /* Mobile Nav */
@@ -347,6 +355,7 @@ form .dates-wraper label {
 }
 .dates .flatpickr-input {
   border: 1px solid var(--light-blue);
+  width: 85px;
 }
 
 .dates .flatpickr-input.active {
@@ -501,6 +510,18 @@ form .dates-wraper label {
     gap: 10px;
     justify-content: start;
     flex-wrap: wrap;
+  }
+  #hamburger-menu {
+    padding: 18px 12px;
+  }
+  .hamburger-menu-wraper {
+    display: block;
+  }
+  .navigation {
+    display: none;
+  }
+  .user-wraper {
+    padding-top: 0;
   }
 }
 
