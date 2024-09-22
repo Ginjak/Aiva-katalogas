@@ -61,6 +61,18 @@ const data = [
 
 document.addEventListener("DOMContentLoaded", () => {
   // Function to handle showing the modal
+  const reset = function () {
+    const naujasDarbuotojasModal = document.getElementById(
+      "naujasDarbuotojasModal"
+    );
+    naujasDarbuotojasModal.querySelector("#naujasDarbuotojasVardas").value = "";
+    naujasDarbuotojasModal.querySelector("#naujasDarbuotojasPareigos").value =
+      "";
+    naujasDarbuotojasModal.querySelector("#naujasDarbuotojasPadalinys").value =
+      "";
+    naujasDarbuotojasModal.querySelector("#naujasDarbuotojasVartotojas").value =
+      "";
+  };
 
   function showModal(company) {
     const modal = document.getElementById("editModal");
@@ -303,8 +315,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function createHtmlStructure(data) {
     let imonesId = "";
     const imonesWraper = document.querySelector(".imones-wraper");
-    const darbuotojaiDiv = document.querySelector(".darbuotojai-wraper");
 
+    const darbuotojaiDiv = document.querySelector(".darbuotojai-wraper");
     imonesWraper.innerHTML = "";
     darbuotojaiDiv.innerHTML = "";
 
@@ -324,34 +336,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const darbuotojuTable = document.createElement("div");
       darbuotojuTable.className = "darbuotoju-table";
-      darbuotojuTable.setAttribute(
-        "data-id",
-        `darb-${company.id.split("-")[1]}`
-      );
       darbuotojuTable.id = `darb-${company.id.split("-")[1]}`;
       darbuotojuTable.style.display =
-        company.darbuotojai.length > 0 ? "none" : "block";
-
-      const naujasDarbBtn = document.createElement("div");
-      naujasDarbBtn.className = "flex-center";
-      naujasDarbBtn.innerHTML = `
-        <button id="naujas-darbuotojas-btn" data-id="imone-${
-          company.id.split("-")[1]
-        }" class="btn btn-primary btn-extr-small">Pridėti darbuotoją</button>
-      `;
-
-      darbuotojuTable.appendChild(naujasDarbBtn);
+        company.darbuotojai.length > 0 ? "none" : "block"; // Show table only if there are employees
 
       const tableHeader = document.createElement("div");
       tableHeader.className = "table-header";
       tableHeader.innerHTML = `
-        <div class="cell">Darbuotojas</div>
-        <div class="cell">Pareigos</div>
-        <div class="cell">Padalinys</div>
-        <div class="cell">Vartotojas</div>
-      `;
+          <div class="cell">Darbuotojas</div>
+          <div class="cell">Pareigos</div>
+          <div class="cell">Padalinys</div>
+          <div class="cell">Vartotojas</div>
+        `;
       darbuotojuTable.appendChild(tableHeader);
-
       if (
         company.darbuotojai.length > 0 &&
         Object.keys(company.darbuotojai[0]).length !== 0
@@ -381,175 +378,78 @@ document.addEventListener("DOMContentLoaded", () => {
           .querySelectorAll(".darbuotoju-table")
           .forEach((table) => (table.style.display = "none"));
 
+        // Show the clicked table only if it has employees
         if (company.darbuotojai.length > 0) {
           darbuotojuTable.style.display = "grid";
+        }
+        const darbuotojai = document.querySelector(".darbuotojai");
+
+        // Check if the test button is already appended
+        if (!darbuotojai.querySelector("#naujas-darbuotojas-btn")) {
+          const naujasDarbBtn = document.createElement("div");
+          naujasDarbBtn.className = "flex-center";
+          naujasDarbBtn.innerHTML = `
+      <button id="naujas-darbuotojas-btn" class="btn btn-primary btn-extr-small ">Pridėti darbuotoją</button>
+    `;
+          darbuotojai.appendChild(naujasDarbBtn);
+          const naujasDarbBtnElement = document.getElementById(
+            "naujas-darbuotojas-btn"
+          );
+          naujasDarbBtnElement.addEventListener("click", function () {
+            const naujasDarbuotojasModal = document.getElementById(
+              "naujasDarbuotojasModal"
+            );
+            naujasDarbuotojasModal.setAttribute("data-id", imonesId);
+            if (naujasDarbuotojasModal) {
+              naujasDarbuotojasModal.style.display = "block"; // or any other logic to open the modal
+            }
+          });
         }
       });
 
       imoneDiv.querySelector(".edit-button").addEventListener("click", () => {
         showModal(company);
       });
-
-      // Add event listener for the "Pridėti darbuotoją" button
-      const addEmployeeButton = naujasDarbBtn.querySelector(
-        `#naujas-darbuotojas-btn`
-      );
-      if (addEmployeeButton) {
-        addEmployeeButton.addEventListener("click", () => {
-          const naujasDarbModal = document.querySelector(
-            "#naujasDarbuotojasModal"
-          );
-          naujasDarbModal.style.display = "block";
-
-          document.querySelector("#naujasDarbuotojasVardas").value = "";
-          document.querySelector("#naujasDarbuotojasPareigos").value = "";
-          document.querySelector("#naujasDarbuotojasPadalinys").value = "";
-          document.querySelector("#naujasDarbuotojasVartotojas").value = "";
-
-          const saugotiDarbuotoja = document.querySelector(
-            "#naujasDarbuotojasIssaugoti"
-          );
-
-          // Remove any existing event listener for the save button
-          const existingSaveHandler =
-            saugotiDarbuotoja.getAttribute("data-handler");
-          if (existingSaveHandler) {
-            saugotiDarbuotoja.removeEventListener(
-              "click",
-              window[existingSaveHandler]
-            );
-          }
-
-          // Define the new event handler
-          const saveHandler = () => {
-            const vardas = document.querySelector(
-              "#naujasDarbuotojasVardas"
-            ).value;
-            const pareigos = document.querySelector(
-              "#naujasDarbuotojasPareigos"
-            ).value;
-            const padalinys = document.querySelector(
-              "#naujasDarbuotojasPadalinys"
-            ).value;
-            const vartotojas = document.querySelector(
-              "#naujasDarbuotojasVartotojas"
-            ).value;
-
-            const naujasDarbuotojas = {
-              darbuotojas: vardas,
-              pareigos: pareigos,
-              padalinys: padalinys,
-              vartotojas: vartotojas,
-            };
-
-            pridetiDarbuotoja(company.id, naujasDarbuotojas);
-
-            naujasDarbModal.style.display = "none";
-
-            console.log(naujasDarbuotojas);
-            console.log(data);
-
-            createHtmlStructure(data);
-
-            saugotiDarbuotoja.removeEventListener("click", saveHandler);
-            saugotiDarbuotoja.removeAttribute("data-handler");
-          };
-
-          saugotiDarbuotoja.addEventListener("click", saveHandler);
-          saugotiDarbuotoja.setAttribute("data-handler", saveHandler.name);
-        });
-      }
     });
-  }
 
+    document
+      .querySelector("#naujasDarbuotojasIssaugoti")
+      .addEventListener("click", () => {
+        const imonesId = document
+          .getElementById("naujasDarbuotojasModal")
+          .getAttribute("data-id");
+
+        const modal = document.querySelector("#naujasDarbuotojasModal");
+
+        let darbuotojasData = {
+          darbuotojas: naujasDarbuotojasModal.querySelector(
+            "#naujasDarbuotojasVardas"
+          ).value,
+          pareigos: naujasDarbuotojasModal.querySelector(
+            "#naujasDarbuotojasPareigos"
+          ).value,
+          padalinys: naujasDarbuotojasModal.querySelector(
+            "#naujasDarbuotojasPadalinys"
+          ).value,
+          vartotojas: naujasDarbuotojasModal.querySelector(
+            "#naujasDarbuotojasVartotojas"
+          ).value,
+        };
+
+        const index = data.findIndex((item) => item.id === imonesId);
+
+        if (index !== -1) {
+          data[index].darbuotojai.push(darbuotojasData);
+        }
+        reset();
+        createHtmlStructure(data);
+        console.log(`Cia yra: ${imonesId}`);
+        console.log(data);
+        modal.style.display = "none";
+      });
+  }
   // Call the function to create the HTML structure
   createHtmlStructure(data);
 
-  function pridetiDarbuotoja(companyId, newEmployee) {
-    // Find the company object by its id
-    const company = data.find((company) => company.id === companyId);
-    if (company) {
-      company.darbuotojai.push(newEmployee);
-    } else {
-      console.error(`Company with id ${companyId} not found`);
-    }
-  }
-
-  data.forEach((company) => {
-    const dataId = company.id;
-    const button = document.querySelector(`button[data-id="${dataId}"]`);
-
-    if (button) {
-      button.addEventListener("click", () => {
-        console.log(`test: ${button}`);
-        const naujasDarbModal = document.querySelector(
-          "#naujasDarbuotojasModal"
-        );
-        naujasDarbModal.style.display = "block";
-
-        // Reset the input fields every time the modal is opened
-        document.querySelector("#naujasDarbuotojasVardas").value = "";
-        document.querySelector("#naujasDarbuotojasPareigos").value = "";
-        document.querySelector("#naujasDarbuotojasPadalinys").value = "";
-        document.querySelector("#naujasDarbuotojasVartotojas").value = "";
-
-        const saugotiDarbuotoja = document.querySelector(
-          "#naujasDarbuotojasIssaugoti"
-        );
-
-        // Remove any existing event listener for the save button
-        const existingSaveHandler =
-          saugotiDarbuotoja.getAttribute("data-handler");
-
-        if (existingSaveHandler) {
-          saugotiDarbuotoja.removeEventListener(
-            "click",
-            window[existingSaveHandler]
-          );
-        }
-
-        // Define the new event handler
-        const saveHandler = () => {
-          const vardas = document.querySelector(
-            "#naujasDarbuotojasVardas"
-          ).value;
-          const pareigos = document.querySelector(
-            "#naujasDarbuotojasPareigos"
-          ).value;
-          const padalinys = document.querySelector(
-            "#naujasDarbuotojasPadalinys"
-          ).value;
-          const vartotojas = document.querySelector(
-            "#naujasDarbuotojasVartotojas"
-          ).value;
-
-          const naujasDarbuotojas = {
-            darbuotojas: vardas,
-            pareigos: pareigos,
-            padalinys: padalinys,
-            vartotojas: vartotojas,
-          };
-
-          // Add the new employee to the company's employees list
-          pridetiDarbuotoja(dataId, naujasDarbuotojas);
-
-          // Close the modal
-          naujasDarbModal.style.display = "none";
-
-          console.log(naujasDarbuotojas);
-          console.log(data);
-
-          createHtmlStructure(data);
-
-          // Remove the event listener after saving
-          saugotiDarbuotoja.removeEventListener("click", saveHandler);
-          saugotiDarbuotoja.removeAttribute("data-handler");
-        };
-
-        // Attach the new event handler
-        saugotiDarbuotoja.addEventListener("click", saveHandler);
-        saugotiDarbuotoja.setAttribute("data-handler", saveHandler.name);
-      });
-    }
-  });
+  // Prideti nauja darbuotoja
 });
