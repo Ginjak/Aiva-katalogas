@@ -237,7 +237,14 @@ document.addEventListener("DOMContentLoaded", () => {
       identifikavimui: indentifikacija,
     };
 
-    const newDarbuotojai = [{}];
+    const newDarbuotojai = [
+      {
+        darbuotojas: "Petras Petraitis",
+        padalinys: "IT",
+        pareigos: "Vadybininkas",
+        vartotojas: "Admin",
+      },
+    ];
 
     const index = data.length;
 
@@ -330,7 +337,7 @@ document.addEventListener("DOMContentLoaded", () => {
       );
       darbuotojuTable.id = `darb-${company.id.split("-")[1]}`;
       darbuotojuTable.style.display =
-        company.darbuotojai.length > 0 ? "none" : "block";
+        company.darbuotojai.length > 0 ? "none" : "grid";
 
       const naujasDarbBtn = document.createElement("div");
       naujasDarbBtn.className = "flex-center";
@@ -352,10 +359,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       darbuotojuTable.appendChild(tableHeader);
 
-      if (
-        company.darbuotojai.length > 0 &&
-        Object.keys(company.darbuotojai[0]).length !== 0
-      ) {
+      if (company.darbuotojai.length > 0) {
         company.darbuotojai.forEach((darbuotojas) => {
           const tableRow = document.createElement("div");
           tableRow.className = "table-row";
