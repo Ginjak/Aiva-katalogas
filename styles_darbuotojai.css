@@ -11,6 +11,10 @@
 .imones {
   flex: 1;
 }
+.imones h2,
+.darbuotojai h2 {
+  margin: 20px 0;
+}
 
 .darbuotojai {
   flex: 2;
@@ -107,7 +111,7 @@
 
 .modal-title {
   text-align: center;
-  margin: 20px 0;
+  margin: 30px 0;
 }
 
 .modal-close-button {
@@ -151,7 +155,8 @@
   display: flex;
   gap: 10px;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 #nauja-imone-btn,
