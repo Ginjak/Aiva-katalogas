@@ -60,8 +60,6 @@ const data = [
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Function to handle showing the modal
-
   function showModal(company) {
     const modal = document.getElementById("editModal");
     const kompanijosPavadinimas = document.getElementById(
@@ -80,7 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const saveChangesBtn = document.getElementById("saveChangesBtn");
 
-    // Set current company name in input
     kompanijosPavadinimas.value = company.imones[0].pavadinimas;
     imonesKodas.value = company.imones[0].imonesKodas;
     pvmKodas.value = company.imones[0].pvmKodas;
@@ -93,10 +90,8 @@ document.addEventListener("DOMContentLoaded", () => {
     numeravimui.value = company.imones[0].numeravimui;
     identifikavimui.value = company.imones[0].identifikavimui;
 
-    // Show modal
     modal.style.display = "block";
 
-    // Handle save changes
     saveChangesBtn.onclick = () => {
       const newKompanijosPavadinimas = kompanijosPavadinimas.value;
       const newImonesKodas = imonesKodas.value;
@@ -122,16 +117,13 @@ document.addEventListener("DOMContentLoaded", () => {
       company.imones[0].numeravimui = newNumeravimui;
       company.imones[0].identifikavimui = newIdentifikavimui;
 
-      // Update the displayed company name
       document.querySelector(`#${company.id} .imone-tile`).textContent =
         newKompanijosPavadinimas;
 
-      // Close the modal
       modal.style.display = "none";
     };
   }
 
-  // Close the modal when the close button is clicked
   document.querySelector("#close-edit-modal").onclick = () => {
     document.getElementById("editModal").style.display = "none";
   };
@@ -155,7 +147,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("naujasDarbuotojasModal").style.display = "none";
   };
 
-  // Close the modal when clicking outside of it
   window.onclick = (event) => {
     const modal = document.getElementById("editModal");
     if (event.target === modal) {
@@ -176,7 +167,6 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   function addDataObject(newImone, newDarbuotojai, newId) {
-    // Default values for imone
     const defaultImone = {
       pavadinimas: "",
       imonesKodas: "",
@@ -191,10 +181,8 @@ document.addEventListener("DOMContentLoaded", () => {
       identifikavimui: "",
     };
 
-    // Merge default values with provided newImone
     const imoneToAdd = { ...defaultImone, ...newImone };
 
-    // Create the new object with the specified or default values
     const newObject = {
       imones: [imoneToAdd],
       id: newId,
@@ -205,7 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   document.querySelector("#naujaImoneIssaugoti").onclick = () => {
-    // Get values from input fields
     const pavadinimas = document.querySelector(
       "#naujaKompanijaPavadinimas"
     ).value;
@@ -222,7 +209,6 @@ document.addEventListener("DOMContentLoaded", () => {
       "#naujaIdentifikavimui"
     ).value;
 
-    // Prepare newImone object with values from the modal
     let newImone = {
       pavadinimas: pavadinimas,
       imonesKodas: imonesKodas,
@@ -278,8 +264,6 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector("#naujaIdentifikavimui").value = "";
     }
 
-    console.log(data);
-
     document.getElementById("naujaImone").style.display = "none";
     const pridetiDarb = document.querySelector("#naujas-darbuotojas-btn");
     const alertMessageId = document.querySelector("#alertMessage");
@@ -292,7 +276,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Adding hover effect to show buttons
   function addHoverEffect(imoneElement) {
     imoneElement.addEventListener("mouseover", () => {
       imoneElement
@@ -379,7 +362,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       imoneDiv.querySelector(".show-button").addEventListener("click", () => {
         imonesId = imoneDiv.id;
-        console.log(imonesId);
 
         document
           .querySelectorAll(".darbuotoju-table")
@@ -394,7 +376,6 @@ document.addEventListener("DOMContentLoaded", () => {
         showModal(company);
       });
 
-      // Add event listener for the "Pridėti darbuotoją" button
       const addEmployeeButton = naujasDarbBtn.querySelector(
         `#naujas-darbuotojas-btn`
       );
@@ -414,7 +395,6 @@ document.addEventListener("DOMContentLoaded", () => {
             "#naujasDarbuotojasIssaugoti"
           );
 
-          // Remove any existing event listener for the save button
           const existingSaveHandler =
             saugotiDarbuotoja.getAttribute("data-handler");
           if (existingSaveHandler) {
@@ -424,7 +404,6 @@ document.addEventListener("DOMContentLoaded", () => {
             );
           }
 
-          // Define the new event handler
           const saveHandler = () => {
             const vardas = document.querySelector(
               "#naujasDarbuotojasVardas"
@@ -450,9 +429,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             naujasDarbModal.style.display = "none";
 
-            console.log(naujasDarbuotojas);
-            console.log(data);
-
             createHtmlStructure(data);
 
             saugotiDarbuotoja.removeEventListener("click", saveHandler);
@@ -466,11 +442,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Call the function to create the HTML structure
   createHtmlStructure(data);
 
   function pridetiDarbuotoja(companyId, newEmployee) {
-    // Find the company object by its id
     const company = data.find((company) => company.id === companyId);
     if (company) {
       company.darbuotojai.push(newEmployee);
@@ -485,13 +459,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (button) {
       button.addEventListener("click", () => {
-        console.log(`test: ${button}`);
         const naujasDarbModal = document.querySelector(
           "#naujasDarbuotojasModal"
         );
         naujasDarbModal.style.display = "block";
 
-        // Reset the input fields every time the modal is opened
         document.querySelector("#naujasDarbuotojasVardas").value = "";
         document.querySelector("#naujasDarbuotojasPareigos").value = "";
         document.querySelector("#naujasDarbuotojasPadalinys").value = "";
@@ -501,7 +473,6 @@ document.addEventListener("DOMContentLoaded", () => {
           "#naujasDarbuotojasIssaugoti"
         );
 
-        // Remove any existing event listener for the save button
         const existingSaveHandler =
           saugotiDarbuotoja.getAttribute("data-handler");
 
@@ -512,7 +483,6 @@ document.addEventListener("DOMContentLoaded", () => {
           );
         }
 
-        // Define the new event handler
         const saveHandler = () => {
           const vardas = document.querySelector(
             "#naujasDarbuotojasVardas"
@@ -534,23 +504,16 @@ document.addEventListener("DOMContentLoaded", () => {
             vartotojas: vartotojas,
           };
 
-          // Add the new employee to the company's employees list
           pridetiDarbuotoja(dataId, naujasDarbuotojas);
 
-          // Close the modal
           naujasDarbModal.style.display = "none";
-
-          console.log(naujasDarbuotojas);
-          console.log(data);
 
           createHtmlStructure(data);
 
-          // Remove the event listener after saving
           saugotiDarbuotoja.removeEventListener("click", saveHandler);
           saugotiDarbuotoja.removeAttribute("data-handler");
         };
 
-        // Attach the new event handler
         saugotiDarbuotoja.addEventListener("click", saveHandler);
         saugotiDarbuotoja.setAttribute("data-handler", saveHandler.name);
       });
